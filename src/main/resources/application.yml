@@ -1,0 +1,17 @@
+server:
+  port: 2333
+
+spring:
+  application:
+    name: tstjpa
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tstjpa?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 1
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
