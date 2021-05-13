@@ -1,9 +1,6 @@
 package com.xyc.jpademo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 public class Student {
     @Id
@@ -16,6 +13,10 @@ public class Student {
 
     @Column(name = "studentcode")
     private String studentcode;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clazz_id", referencedColumnName = "id")
+    private Clazz clazz;
 
     public Integer getId() {
         return id;
@@ -41,12 +42,21 @@ public class Student {
         this.studentcode = studentcode;
     }
 
+    public Integer getClazz_id() {
+        return clazz_id;
+    }
+
+    public void setClazz_id(Integer clazz_id) {
+        this.clazz_id = clazz_id;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", studentname='" + studentname + '\'' +
                 ", studentcode='" + studentcode + '\'' +
+                ", clazz_id=" + clazz_id +
                 '}';
     }
 }
